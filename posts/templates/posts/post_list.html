@@ -2,8 +2,15 @@
 
 {% block content %}
     {% for post in posts %}
-        <p>published: {{ post.published_date }}</p>
-        <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
-        <p>{{ post.text|linebreaksbr }}</p>
+        {% if forloop.first %}<div class="columns">{% endif %}
+            <div class="column">
+                <div class="notification">
+                    <p>published: {{ post.published_date }}</p>
+                    <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+                    <p>{{ post.text|linebreaksbr }}</p>
+                </div>
+            </div>
+            {% if forloop.counter|divisibleby:3 %}</div><div class="columns">{% endif %}
+            {% if forloop.last %}</div>{% endif %}
     {% endfor %}
 {% endblock %}

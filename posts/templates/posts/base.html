@@ -7,15 +7,44 @@
         <title>Dennis's blog</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
         <link rel="stylesheet" href="{% static 'css/posts.css' %}">
+{% comment %}
+        <link rel="stylesheet" href="{% static 'css/debugger.css' %}">
+{% endcomment %}
         <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     </head>
     <body>
-        <div class="page-header">
-            <h1><a href="/">Dennis's blog</a></h1>
-        </div>
-        <div class="content">
-            {% block content %}
-            {% endblock %}
-        </div>
+
+        <!--  NAVBAR -->
+        <nav class="navbar is-transparent is-primary" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="/">
+                    <h1 class="title is-large">Dennis's Blog</h1>
+                </a>
+                <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+            <div class="navbar-menu">
+                <div class="navbar-start">
+
+                </div>
+                <div class="navbar-end">
+                    <div class="navbar-item">
+                        <a class="button" href="{% url 'post_new' %}">
+                            <span class="icon">
+                                <i class="fas fa-plus"></i>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- CONTENT-->
+        {% block content %}
+        {% endblock %}
+
     </body>
 </html>
